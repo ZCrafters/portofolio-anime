@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zefanya Williams - Digital Business Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f0f10',
+                        primary: '#e50000',
+                        secondary: '#1a1a1a',
+                        accent: '#e9e9e9',
+                        neon: '#ff3a7f',
+                        cyber: '#00e5ff',
+                        electric: '#fffa5d'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            background-color: #0f0f10;
+            color: #e9e9e9;
+            overflow-x: hidden;
+        }
+        
+        .cyber-font {
+            font-family: 'Chakra Petch', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(270deg, #ff3a7f, #fffa5d, #00e5ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-animation 4s ease infinite;
+        }
+        
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        /* NEON FUTURISTIC BUTTON STYLES */
+        .cyber-button {
+            position: relative;
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 4px;
+            overflow: hidden;
+            z-index: 1;
+            background: linear-gradient(145deg, rgba(26,26,26,0.7) 0%, rgba(15,15,16,0.8) 100%);
+            box-shadow: 
+                0 0 10px rgba(229, 0, 0, 0.2),
+                inset 0 0 10px rgba(229, 0, 0, 0.3);
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .cyber-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .cyber-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 5px 15px rgba(229, 0, 0, 0.4),
+                0 0 20px rgba(255, 58, 127, 0.5),
+                0 0 35px rgba(0, 229, 255, 0.3),
+                inset 0 0 10px rgba(229, 0, 0, 0.5);
+        }
+        
+        .cyber-button:hover:before {
+            left: 100%;
+        }
+        
+        .cyber-button span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 2;
+            background: transparent;
+        }
+        
+        .cyber-button .glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 90, 127, 0.8);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: glow-pulse 2s infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 90, 127, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 90, 127, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 90, 127, 0); }
+        }
+        
+        .cyber-button:hover .glow {
+            opacity: 1;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .cyber-button .scan {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00e5ff, #fffa5d, transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+            animation: scan-beam 3s infinite;
+        }
+        
+        @keyframes scan-beam {
+            0%, 100% {
+                transform: translateX(-100%);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(100%);
+                opacity: 1;
+            }
+        }
+        
+        .cyber-button .edge {
+            position: absolute;
+            display: block;
+        }
+        
+        .cyber-button .edge-top {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff3a7f);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .cyber-button .edge-right {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #fffa5d);
+            transform-origin: top;
+            transform: scaleY(0);
+            transition: transform 0.3s ease 0.1s;
+        }
+        
+        .cyber-button .edge-bottom {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, #00e5ff);
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform 0.3s ease 0.2s;
+        }
+        
+        .cyber-button .edge-left {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(0deg, transparent, #ff3a7f);
+            transform-origin: bottom;
+            transform: scaleY(0);
+            transition: transform 0.3s ease 0.3s;
+        }
+        
+        .cyber-button:hover .edge-top, 
+        .cyber-button:hover .edge-right, 
+        .cyber-button:hover .edge-bottom, 
+        .cyber-button:hover .edge-left {
+            transform: scaleX(1) scaleY(1);
+        }
+        
+        /* Secondary button style */
+        .cyber-secondary {
+            background: transparent;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .cyber-secondary:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff3a7f, #00e5ff, #fffa5d, #ff3a7f);
+            background-size: 300% 300%;
+            border-radius: 50px;
+            z-index: -1;
+            opacity: 0.7;
+            transition: all 0.4s;
+            animation: gradient-animation 4s ease infinite;
+        }
+        
+        .cyber-secondary:hover {
+            background: rgba(26,26,26,0.7);
+        }
+        
+        .cyber-secondary:hover:before {
+            opacity: 1;
+            filter: blur(1px);
+            box-shadow: 0 0 15px rgba(229, 0, 0, 0.4);
+        }
+        
+        .card-glass {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 0, 0, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 0, 0, 0.37);
+        }
+        
+        /* Floating animation */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hover-3d {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-3d:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
+            box-shadow: 0 20px 30px rgba(229, 0, 0, 0.15);
+        }
+        
+        /* Background animations */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(229, 0, 0, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(229,0,0,0.03)" stroke-width="1"/></svg>');
+            background-size: 50px 50px;
+        }
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(
+                to bottom,
+                rgba(15, 15, 16, 0) 0%,
+                rgba(229, 0, 0, 0.02) 50%,
+                rgba(15, 15, 16, 0) 100%
+            );
+            background-size: 100% 8px;
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+        
+        .glow-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(229, 0, 0, 0.1) 0%, rgba(229, 0, 0, 0) 70%);
+            filter: blur(20px);
+            animation: moveGlow 20s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+        
+        @keyframes moveGlow {
+            0% { transform: translate(10%, 10%); }
+            25% { transform: translate(80%, 30%); }
+            50% { transform: translate(50%, 70%); }
+            75% { transform: translate(20%, 40%); }
+            100% { transform: translate(70%, 20%); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .cyber-button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+    <div class="glow-effect"></div>
+    <div class="glow-effect" style="animation-delay: -10s; left: 30%; top: 60%;"></div>
+
+    <!-- Time Display -->
+    <div class="fixed top-5 right-5 z-50 bg-secondary bg-opacity-80 backdrop-blur-sm border border-primary border-opacity-20 rounded-xl p-3 flex items-center shadow-lg neon-shadow">
+        <div class="text-lg font-bold mr-2" id="jakarta-time">00:00:00</div>
+        <div class="text-xs text-primary flex items-center">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            <span>JKT</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-opacity-80 backdrop-blur-sm bg-secondary py-3 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center cyber-font">
+                    <div class="text-2xl font-bold animated-gradient">Zefanya Williams</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="px-3 py-2 text-sm font-medium hover:text-primary transition relative">
+                            <span class="glitch-text">Home</span>
+                        </a>
+                        <a href="#about" class="px-3 py-2 text-sm font-medium hover:text-primary transition relative">
+                            <span class="glitch-text">About</span>
+                        </a>
+                        <a href="#expertise" class="px-3 py-2 text-sm font-medium hover:text-primary transition relative">
+                            <span class="glitch-text">Expertise</span>
+                        </a>
+                        <a href="#experience" class="px-3 py-2 text-sm font-medium hover:text-primary transition relative">
+                            <span class="glitch-text">Experience</span>
+                        </a>
+                        <a href="#contact" class="px-3 py-2 text-sm font-medium hover:text-primary transition relative">
+                            <span class="glitch-text">Contact</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark">
+        <!-- Animated particles -->
+        <div class="particle" style="top: 20%; left: 10%; width: 50px; height: 50px; animation-duration: 20s;"></div>
+        <div class="particle" style="top: 60%; left: 80%; width: 30px; height: 30px; animation-duration: 25s; animation-delay: -5s;"></div>
+        
+        <div class="container mx-auto px-6 py-32 z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 mb-10 md:mb-0 cyber-font">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                        <span class="animated-gradient">Zefanya Williams</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-accent mb-6">Digital Business Student | Content Creator | AI Enthusiast</h2>
+                    <p class="text-gray-400 mb-8 max-w-lg">
+                        A passionate digital business student with expertise in content creation, digital marketing, and data science. 
+                        I enjoy solving problems and contributing to meaningful projects.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contact" class="cyber-button">
+                            <span>
+                                <i class="fas fa-comment-alt"></i>
+                                Contact Me
+                            </span>
+                            <div class="glow"></div>
+                            <div class="scan"></div>
+                            <span class="edge edge-top"></span>
+                            <span class="edge edge-right"></span>
+                            <span class="edge edge-bottom"></span>
+                            <span class="edge edge-left"></span>
+                        </a>
+                        
+                        <a href="#about" class="cyber-button cyber-secondary">
+                            <span>
+                                <i class="fas fa-user-astronaut"></i>
+                                Learn More
+                            </span>
+                            <div class="glow"></div>
+                            <div class="scan"></div>
+                            <span class="edge edge-top"></span>
+                            <span class="edge edge-right"></span>
+                            <span class="edge edge-bottom"></span>
+                            <span class="edge edge-left"></span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center relative">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon to-cyber rounded-full blur-xl opacity-30 animate-pulse"></div>
+                        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary border-opacity-60 shadow-[0_0_30px_rgba(255,58,127,0.5)]">
+                            <img src="https://lh3.googleusercontent.com/a/ACg8ocLX3p_aKn0gXs5yR-2Gf5Qb3ydICZu2W5Or0L2gOmm9v5Vus8Gvig=s216-c-no" 
+                                 alt="Zefanya Williams" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 border-2 border-electric border-opacity-40 rounded-full animate-ping opacity-10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-secondary relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 cyber-font">
+                    <span class="animated-gradient">About Me</span>
+                </h2>
+                <div class="h-1 w-24 bg-neon rounded-full mx-auto mb-2"></div>
+                <div class="h-1 w-16 bg-cyber rounded-full mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-10 items-center">
+                <div class="lg:w-1/2">
+                    <div class="card-glass p-8 rounded-2xl hover-3d">
+                        <h3 class="text-2xl font-bold mb-4 text-neon cyber-font">Who I Am</h3>
+                        <p class="text-accent mb-6">
+                            I am a digital business student actively involved as a BA campus and frequently participate in volunteer activities. 
+                            I have the ability to work both individually and in groups. Additionally, I am a content creator for personal branding.
+                        </p>
+                        <p class="text-accent mb-6">
+                            I'm interested in AI technology and enjoy contributing to various campus project activities. 
+                            I also enjoy challenges in problem-solving.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-8">
+                            <div class="bg-dark bg-opacity-60 px-4 py-2 rounded-full border border-cyber border-opacity-20">
+                                <span class="text-sm text-accent">Team Leadership</span>
+                            </div>
+                            <div class="bg-dark bg-opacity-60 px-4 py-2 rounded-full border border-neon border-opacity-20">
+                                <span class="text-sm text-accent">Problem Solving</span>
+                            </div>
+                            <div class="bg-dark bg-opacity-60 px-4 py-2 rounded-full border border-electric border-opacity-20">
+                                <span class="text-sm text-accent">Creative Thinking</span>
+                            </div>
+                            <div class="bg-dark bg-opacity-60 px-4 py-2 rounded-full border border-cyber border-opacity-20">
+                                <span class="text-sm text-accent">Adaptability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="card-glass p-8 rounded-2xl hover-3d">
+                        <h3 class="text-2xl font-bold mb-6 text-neon cyber-font">Education & Organizations</h3>
+                        
+                        <div class="space-y-8 relative pl-8 border-l-2 border-cyber border-opacity-30">
+                            <div class="relative">
+                                <div class="absolute w-4 h-4 bg-neon rounded-full -left-9 top-1.5"></div>
+                                <div class="absolute w-0.5 h-full bg-gradient-to-b from-cyber to-transparent -left-8 top-5 opacity-40"></div>
+                                <h4 class="text-lg font-semibold text-cyber cyber-font">Green Academy</h4>
+                                <p class="text-sm text-gray-400 mb-2">Digital Business Student</p>
+                                <p class="text-accent text-sm">
+                                    Currently pursuing studies in digital business with focus on AI technology and digital marketing strategies.
+                                </p>
+                            </div>
+                            
+                            <div class="relative">
+                                <div class="absolute w-4 h-4 bg-electric rounded-full -left-9 top-1.5"></div>
+                                <h4 class="text-lg font-semibold text-electric cyber-font">Badan Executive Mahasiswa</h4>
+                                <p class="text-sm text-gray-400 mb-2">2023 - Present</p>
+                                <p class="text-accent text-sm">
+                                    Best member of September in Medinfo Division. Completed various projects related to design, content planning, and documentation.
+                                </p>
+                            </div>
+                            
+                            <div class="relative">
+                                <div class="absolute w-4 h-4 bg-neon rounded-full -left-9 top-1.5"></div>
+                                <h4 class="text-lg font-semibold text-neon cyber-font">Mentorbox.id</h4>
+                                <p class="text-sm text-gray-400 mb-2">Sponsorship Head</p>
+                                <p class="text-accent text-sm">
+                                    Led sponsorship team for campus events and activities, developing negotiation and partnership skills.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-20 bg-dark relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 cyber-font">
+                    <span class="animated-gradient">My Expertise</span>
+                </h2>
+                <div class="h-1 w-24 bg-cyber rounded-full mx-auto mb-2"></div>
+                <div class="h-1 w-16 bg-electric rounded-full mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video Editing -->
+                <div class="card-glass p-8 rounded-2xl hover-3d">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6 border border-neon border-opacity-20">
+                        <i class="fas fa-video text-2xl text-neon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-accent cyber-font">Video Editing</h3>
+                    <p class="text-gray-400 mb-4">
+                        Creating engaging video content with professional editing techniques for various platforms.
+                    </p>
+                    <div class="w-full bg-gray-700 rounded-full h-2 mt-6">
+                        <div class="bg-neon h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <!-- Content Creator -->
+                <div class="card-glass p-8 rounded-2xl hover-3d">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6 border border-cyber border-opacity-20">
+                        <i class="fas fa-pen-nib text-2xl text-cyber"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-accent cyber-font">Content Creator</h3>
+                    <p class="text-gray-400 mb-4">
+                        Developing compelling content strategies and creating high-quality content for personal branding.
+                    </p>
+                    <div class="w-full bg-gray-700 rounded-full h-2 mt-6">
+                        <div class="bg-cyber h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <!-- Digital Marketing -->
+                <div class="card-glass p-8 rounded-2xl hover-3d">
+                    <div class="w-16 h-16 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6 border border-electric border-opacity-20">
+                        <i class="fas fa-bullhorn text-2xl text-electric"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-accent cyber-font">Digital Marketing</h3>
+                    <p class="text-gray-400 mb-4">
+                        Implementing effective digital marketing strategies to increase engagement and brand awareness.
+                    </p>
+                    <div class="w-full bg-gray-700 rounded-full h-2 mt-6">
+                        <div class="bg-electric h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-20">
+                <a href="#contact" class="cyber-button inline-block">
+                    <span>
+                        <i class="fas fa-arrow-circle-right"></i>
+                        See All Skills
+                    </span>
+                    <div class="glow"></div>
+                    <div class="scan"></div>
+                    <span class="edge edge-top"></span>
+                    <span class="edge edge-right"></span>
+                    <span class="edge edge-bottom"></span>
+                    <span class="edge edge-left"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-secondary relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 cyber-font">
+                    <span class="animated-gradient">Get In Touch</span>
+                </h2>
+                <div class="h-1 w-24 bg-neon rounded-full mx-auto mb-2"></div>
+                <div class="h-1 w-16 bg-cyber rounded-full mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-10">
+                <div class="lg:w-1/2">
+                    <div class="card-glass p-8 rounded-2xl hover-3d h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-cyber cyber-font">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-cyber bg-opacity-20 rounded-full flex items-center justify-center mr-4 border border-cyber border-opacity-20">
+                                    <i class="fas fa-envelope text-cyber"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-accent cyber-font">Email</h4>
+                                    <a href="mailto:zefanyawilliamszero@gmail.com" class="text-cyber hover:underline">zefanyawilliamszero@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-neon bg-opacity-20 rounded-full flex items-center justify-center mr-4 border border-neon border-opacity-20">
+                                    <i class="fas fa-phone text-neon"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-accent cyber-font">Phone</h4>
+                                    <a href="tel:+628994263459" class="text-neon hover:underline">+62 899 4263 459</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-electric bg-opacity-20 rounded-full flex items-center justify-center mr-4 border border-electric border-opacity-20">
+                                    <i class="fab fa-instagram text-electric"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-accent cyber-font">Instagram</h4>
+                                    <a href="https://instagram.com/zefanya.williams" target="_blank" class="text-electric hover:underline">@zefanya.williams</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="card-glass p-8 rounded-2xl hover-3d h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-neon cyber-font">Send Me a Message</h3>
+                        
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-accent mb-1 cyber-font">Your Name</label>
+                                <input type="text" id="name" class="w-full bg-secondary border border-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyber text-accent">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-accent mb-1 cyber-font">Email Address</label>
+                                <input type="email" id="email" class="w-full bg-secondary border border-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon text-accent">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-accent mb-1 cyber-font">Message</label>
+                                <textarea id="message" rows="5" class="w-full bg-secondary border border-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-electric text-accent"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="cyber-button w-full">
+                                <span>
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Message
+                                </span>
+                                <div class="glow"></div>
+                                <div class="scan"></div>
+                                <span class="edge edge-top"></span>
+                                <span class="edge edge-right"></span>
+                                <span class="edge edge-bottom"></span>
+                                <span class="edge edge-left"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold animated-gradient cyber-font">Zefanya Williams</div>
+                    <p class="text-gray-600 text-sm mt-2">Digital Business Student & Content Creator</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-neon transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-cyber transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-electric transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-neon transition">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-900 mt-10 pt-6 text-center">
+                <p class="text-gray-600 text-sm">© 2023 Zefanya Williams. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create floating particles
+            const particleBg = document.createElement('div');
+            particleBg.id = 'particle-bg';
+            document.body.prepend(particleBg);
+            
+            const particleCount = 15;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 5px and 20px
+                const size = Math.random() * 15 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particleBg.appendChild(particle);
+            }
+            
+            // Update Jakarta time
+            function updateJakartaTime() {
+                const options = {
+                    timeZone: 'Asia/Jakarta',
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                };
+                const jakartaTime = new Date().toLocaleTimeString('en-US', options);
+                document.getElementById('jakarta-time').textContent = jakartaTime;
+            }
+            
+            updateJakartaTime();
+            setInterval(updateJakartaTime, 1000);
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'mobile-menu';
+            mobileMenu.id = 'mobileMenu';
+            mobileMenu.innerHTML = `
+                <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium block">Home</a>
+                <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium block">About</a>
+                <a href="#expertise" class="px-3 py-2 rounded-md text-sm font-medium block">Expertise</a>
+                <a href="#experience" class="px-3 py-2 rounded-md text-sm font-medium block">Experience</a>
+                <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium block">Contact</a>
+            `;
+            document.body.appendChild(mobileMenu);
+            
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Close menu when clicking on a link
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+            
+            // Form submit animation
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Animation effect
+                    const submitButton = contactForm.querySelector('button');
+                    const originalText = submitButton.querySelector('span').innerHTML;
+                    submitButton.querySelector('span').innerHTML = `
+                        <i class="fas fa-spinner animate-spin mr-2"></i>
+                        Sending...
+                    `;
+                    
+                    // Simulate sending
+                    setTimeout(() => {
+                        submitButton.querySelector('span').innerHTML = `
+                            <i class="fas fa-check mr-2"></i>
+                            Sent!
+                        `;
+                        submitButton.style.backgroundColor = 'rgba(0, 150, 0, 0.3)';
+                        
+                        // Reset after delay
+                        setTimeout(() => {
+                            submitButton.querySelector('span').innerHTML = originalText;
+                            submitButton.style.backgroundColor = '';
+                            contactForm.reset();
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
